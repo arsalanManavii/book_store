@@ -61,23 +61,7 @@ class BookProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<int?> getQuantityOfBook(int id) async {
-    var db = await DatabaseHelper.instance.database;
-    var result = await db.query(
-      DatabaseHelper.bookTable,
-      columns: [
-        '${DatabaseHelper.bookColumnQuantity}',
-      ],
-      where: '${DatabaseHelper.bookColumnId} = ?',
-      whereArgs: [id],
-    );
-    print(result);
-    if (result.isNotEmpty) {
-      return result.first[DatabaseHelper.bookColumnQuantity] as dynamic;
-    } else {
-      return 0; // Default to 0 if the book is not found
-    }
-  }
+
 
   void getPurchasedBook() async {
     var db = await DatabaseHelper.instance.database;

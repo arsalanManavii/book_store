@@ -20,7 +20,7 @@ class BookDetailScreen extends StatelessWidget {
     final width = MediaQuery.sizeOf(context).width;
     final height = MediaQuery.sizeOf(context).height;
     var shopBookProvider = Provider.of<BookProvider>(context);
-    int quantity = 0;
+    
     return Scaffold(
       appBar: AppBarWidget(
         title: 'Book Detail',
@@ -89,8 +89,8 @@ class BookDetailScreen extends StatelessWidget {
                   const EdgeInsets.symmetric(horizontal: 12.0, vertical: 50.0),
               child: ElevatedButton(
                 onPressed: () async {
-                  quantity = await shopBookProvider.getQuantityOfBook(id) ?? 0;
-                  shopBookProvider.addBookToShoppingCart(id, ++quantity);
+                 
+                  shopBookProvider.addBookToShoppingCart(id, 1);
                 },
                 child: const Text('Add To shopCart'),
               ),
